@@ -1,13 +1,29 @@
-# Two Tier Flask + MySQL Application
+# Two Tier Flask + MySQL Application (Docker Compose)
 
 This project is a Docker-based two-tier application where:
+
 - Flask acts as the backend
 - MySQL stores the data
-- Docker custom network connects both
+- Docker Compose starts both services
+- A Docker volume stores MySQL data permanently
 
 ## Commands to Run
 
-- docker network create mynet
-- docker run -d --name mysql-db --network mynet -e MYSQL_ROOT_PASSWORD=rootpass -e MYSQL_DATABASE=akashdb mysql:5.7
-- docker build -t flask-app .
-- docker run -d --name flask-app -p 8080:5000 --network mynet flask-app
+# Start the application
+docker compose up -d
+
+# Stop the application
+docker compose down
+
+## Check Containers
+docker compose ps
+
+## Access Web App
+http://<EC2-PUBLIC-IP>:8080
+
+## Enter MySQL
+docker exec -it mysql-db mysql -uroot -prootpass
+
+## MySQL Commands
+USE akashdb;
+SELECT * FROM messages;
