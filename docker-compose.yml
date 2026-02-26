@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+
+  mysql-db:
+    image: mysql:5.7
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: akashdb
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - mynet
+
+
+  flask-app:
+    build: .
+    container_name: flask-app
+    restart: always
+    networks:
+      - mynet
+    ports:
+      - '8080:5000'
+    depends_on:
+      - mysql-db
+volumes:
+  mysql_data:
+
+networks:
+  mynet:
+
+

@@ -1,5 +1,18 @@
-*.swp
+# Python cache
 __pycache__/
 *.pyc
+
+# Vim swap files
+*.swp
+
+# Environment variables
 .env
+
+# Logs
 *.log
+
+# Docker artifacts
+*.tar
+
+# System files
+.DS_Store
