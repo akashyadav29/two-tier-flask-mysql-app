@@ -19,7 +19,7 @@ docker compose down
 docker compose ps
 
 ## Access Web App
-http://<EC2-PUBLIC-IP>:8080
+http://EC2-PUBLIC-IP:8080
 
 ## Enter MySQL
 docker exec -it mysql-db mysql -uroot -prootpass
